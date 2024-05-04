@@ -1,0 +1,49 @@
+### Docker not working now
+
+terminal cmd:
+
+(   atharvapawar456  )
+
+eg: atharvapawar456 / doc-test
+
+
+### build docker image
+
+docker build -t atharvapawar456/crop_disease_detector-flask-app .
+
+
+
+docker image rm -f crop_disease_detector-flask-app
+
+docker tag welcome-flask-app atharvapawar456/crop_disease_detector-flask-app
+
+
+
+### docker basic cmd:
+
+docker images
+
+docker ps
+
+docker stop cont_id
+
+docker 
+
+
+### run docker image
+
+docker run -p 5000:5000 welcome-flask-app
+
+http://127.0.0.1:5000
+
+### can access from local host
+
+http://192.168.1.102:5000/
+
+
+
+
+
+
+https://colab.research.google.com/drive/1wwfc_3k539L6MVys7JTZbGZlmTVcG1lw?usp=sharing 
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>CropDiseaseDetector</title>
+</head>
+
+<body>
+    
+    <!-- Nav Bar -->
+    <div class="h-[80px] border grid grid-cols-6 bg-[#ecfdf5]">        
+        <a href="/" class="text-center text-xl font-bold pt-2 col-span-2 flex mx-auto">
+            <img src="{{ url_for('static', filename='setup/logo.png') }}" alt="plant" 
+                class="mb-4 h-14 rounded-md mr-4 border border-2 rounded-xl shadow-md hover:shadow-xl">
+            <div class="pt-3 text-2xl">CropDiseaseDetector</div>
+        </a>
+        
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <a href="/" class="text-center text-xl font-bold py-6 hover:bg-[#d9f99d]">
+            <div>⚛️ Select Crop</div>
+        </a>
+    </div>
+
+    <!-- Content -->
+
+    <!-- Cards -->
+    <div class="h-[560px] flex flex-col justify-center items-center mx-10">
+        <h1 class="text-4xl font-extrabold text-gray-800 mb-10">Crop Disease Detector</h1>
+        <h1 class="text-xl text-gray-500 mb-10">
+            Crop disease detection involves the use of machine learning models to identify and classify diseases affecting various crops. In the provided information, three specific models are highlighted: the Tomato Disease Detection Model, the Sugarcane Disease Detection Model, and the Cotton Disease Detection Model.
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Tomato Section -->
+            <a href="/cropmodel/?modelname=tomatomodel" class="bg-white p-6 rounded-md shadow-md border">
+                <div>
+                    <img src="{{ url_for('static', filename='setup/tomato_image.jpeg') }}" alt="Tomato" 
+                    class="mb-4 w-full h-[210px] rounded-md">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Tomato</h2>
+                    <p class="text-gray-600">Detect and diagnose diseases affecting tomato crops.</p>
+                </div>
+            </a>
+            
+            <!-- Sugarcane Section -->
+            <a href="/cropmodel/?modelname=sugarcanemodel" class="bg-white p-6 rounded-md shadow-md border">
+                <div>
+                    <img src="{{ url_for('static', filename='setup/sugarcane_image.jpeg') }}" alt="Sugarcane" class="mb-4 w-full h-[210px] rounded-md">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Sugarcane</h2>
+                    <p class="text-gray-600">Identify diseases impacting sugarcane plants for better crop management.</p>
+                </div>
+            </a>
+            
+            <!-- Cotton Section -->
+            <a href="/cropmodel/?modelname=cottonmodel" class="bg-white p-6 rounded-md shadow-md border">
+                <div>
+                    <img src="{{ url_for('static', filename='setup/cotton_image.jpeg') }}" alt="Cotton" 
+                    class="mb-4 w-full h-[210px] rounded-md">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Cotton</h2>
+                    <p class="text-gray-600">Detect and analyze diseases affecting cotton plants for improved yield.</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <section>
+        <div class="text-xl text-center font-bold pb-6">☘️ CropDiseaseDetector | 2023</div>
+    </section>
+    
+</body>
+</html>

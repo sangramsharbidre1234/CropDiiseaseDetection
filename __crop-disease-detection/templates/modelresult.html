@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Model Result</title>
+</head>
+<body>
+
+    <!-- Nav Bar -->
+    <div class="h-[80px] border grid grid-cols-6 bg-[#ecfdf5]">        
+        <a href="/" class="text-center text-xl font-bold pt-2 col-span-2 flex mx-auto">
+            <img src="{{ url_for('static', filename='setup/logo.png') }}" alt="plant" 
+                class="mb-4 h-14 rounded-md mr-4 border border-2 rounded-xl shadow-md hover:shadow-xl">
+            <div class="pt-3 text-2xl">CropDiseaseDetector</div>
+        </a>
+        
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <a href="/" class="text-center text-xl font-bold py-6 hover:bg-[#d9f99d]">
+            <div>⚛️ Select Crop</div>
+        </a>
+    </div>
+
+    <!-- Crop Model Name -->
+    <div class="text-xl text-center font-bold py-10">
+        Crop Model {{ modelname }}
+    </div>
+
+    <!-- Upload Image -->
+    <div class="grid grid-cols-3 mt-10">
+        
+        <div class="border w-5/6 mx-auto px-10 py-4 rounded-xl shadow-md col-span-2">
+            <h1 class="text-xl text-center font-bold pb-10">Image Upload</h1>
+            <form action="/upload" method="post" enctype="multipart/form-data" class="mt-12">
+                
+                <input type="text" name="modelname" class="border rounded-l-lg w-9/12 p-2 hidden" value="{{ modelname }}">
+                
+                <!-- <input type="file" name="file" accept=".png, .jpg, .jpeg" class="border rounded-l-lg w-9/12 p-2" required> -->
+                <input type="file" name="file" accept=".png, .jpg, .jpeg, .JPG" class="border rounded-l-lg w-9/12 p-2" required>
+                <button type="submit" class="p-2 w-1/6 border shadow rounded-r-lg ml-6 hover:bg-blue-100 text-xl">Upload</button>
+            </form>
+        </div>
+
+        <!-- img preview -->
+        <div class="border mx-auto p-2 rounded-xl shadow-md w-5/6">
+            <div class="text-xl text-center font-bold pb-2">Image Preview</div>
+            {% if result %}
+            
+                <!-- <img src="{{ url_for('static', filename='uploaded_images/imageFile.png') }}" alt="Tomato" class="mb-4 h-[210px] rounded-md mx-auto"> -->
+
+                <img src="{{ url_for('static', filename='uploaded_images/imageFile.jpeg') }}" alt="Tomato" class="mb-4 h-[210px] rounded-md mx-auto">
+
+            {% else %}
+                
+                <img src="{{ url_for('static', filename='setup/plant.png') }}" alt="plant" class="mb-4 h-[210px] rounded-md mx-auto">
+            
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- Result -->
+    {% if result %}
+    <div class="p-10 mx-10">
+        <div 
+        class="w-4/6 mx-auto px-10 border text-center text-2xl bg-[#fef9c3] py-6 shadow-md hover:shadow-inner">
+        Predicted Result :  <b>{{ result }}</b></div>
+    </div>
+    {% endif %}
+    
+    <!-- Model Details -->
+    
+    {% if model_data %}
+    <div class="mx-10 p-10 border my-10 rounded-xl shadow-sm bg-[#f0fdf4]">
+        <div class="text-center text-xl font-bold mb-10">Model Details</div>
+        
+        <div class="grid grid-cols-2 gap-4 px-10">
+            
+            <div>
+                <b>About Dataset:</b>
+                <div class="px-6 py-6">
+                    <div>- Total Images : {{ model_data.dataset.total_images }}</div>
+                    <div>- Total Classes : {{ model_data.dataset.total_classes }}</div>
+                    <div>- Class Names : <br><p class="pl-20">{{ model_data.dataset.classes_names }}</p></div>
+                </div>
+            </div>
+            
+            <div class="px-20">
+                <b>About Model Training:</b>
+                <div class="px-6 py-6">
+                    <div>- Training Epochs : {{ model_data.training.epochs }}</div>
+                    <div>- Batch Size : {{ model_data.training.batch_size }}</div>
+                    <div>- Img Frame Size : {{ model_data.training.img_frame_size }}</div>
+                    <div>- CNN Layers : {{ model_data.training.CNN_layers }}</div>
+                    <div>- CNN Layer Name : {{ model_data.training.CNN_layer_name }}</div>
+                    <div>- Traning Accuracy : {{ model_data.training.accuracy }}</div>
+                </div>
+            </div>
+                
+        </div>
+        <div>
+            <div class="text-center text-xl font-bold mb-10">References</div>
+            <a href="{{model_data.reference}}" class="text-center text-xl  mb-10">
+                {{model_data.reference}}
+            </a>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Footer -->
+    <section>
+        <div class="text-xl text-center font-bold pb-6">☘️ CropDiseaseDetector | 2023</div>
+    </section>
+        
+
+
+</body>
+</html>
